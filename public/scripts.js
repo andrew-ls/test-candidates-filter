@@ -12,13 +12,24 @@ const newCandidates = [
 	{ name: "Matt", skills: ["PHP", ".Net", "Docker"] },
 ];
 
-function removeRowsFromTable (table)
+function addCandidatesToTable (table, candidates)
 {
-	const rows = table.getElementsByTagName("tr");
+	candidates.forEach((candidate) => (
+		insertCandidate(table, candidate.name, candidate.skills)
+	));
+}
 
-	while (rows.length > 1) {
-		table.deleteRow(1);
-	}
+function filterCandidateBySkill (candidates, skill)
+{
+	/*
+	 * Assuming the use of an ES6 arrow function in addCandidatesToTable means
+	 * I can use ES6 array spread syntax here.
+	*/
+	return candidates.reduce((matchingCandidates, candidate) => (
+		candidate.skills.includes(skill)
+			? [...matchingCandidates, candidate]
+			: matchingCandidates
+	), []);
 }
 
 function insertCandidate (tbody, name, skills)
@@ -34,11 +45,13 @@ function insertCandidate (tbody, name, skills)
 	skillCell.appendChild(candidateSkills);
 }
 
-function addCandidatesToTable (table, candidates)
+function removeRowsFromTable (table)
 {
-	candidates.forEach((candidate) => (
-		insertCandidate(table, candidate.name, candidate.skills)
-	));
+	const rows = table.getElementsByTagName("tr");
+
+	while (rows.length > 1) {
+		table.deleteRow(1);
+	}
 }
 
 function filterCandidateBySkill (candidates, skill)
