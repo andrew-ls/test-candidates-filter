@@ -37,6 +37,14 @@ class CandidatesTable
 			return table;
 		})();
 	}
+
+	clear ()
+	{
+		const rows = this.element.getElementsByTagName("tr");
+		while (rows.length > 1) {
+			this.element.deleteRow(1);
+		}
+	}
 }
 
 function addCandidatesToTable (table, candidates)
@@ -73,7 +81,7 @@ function mountBody ()
 	const candidatesTable = new CandidatesTable(newCandidates);
 	const newCandidatesTable = new CandidatesTable(newCandidates);
 
-	removeRowsFromTable(newCandidatesTable.element);
+	newCandidatesTable.clear();
 	const newTbody = newCandidatesTable.element
 		.getElementsByTagName("tbody")[0];
 
@@ -91,15 +99,6 @@ function mountBody ()
 		newCandidatesTable.element,
 		document.getElementById("heading-candidates-filtered").nextSibling
 	);
-}
-
-function removeRowsFromTable (table)
-{
-	const rows = table.getElementsByTagName("tr");
-
-	while (rows.length > 1) {
-		table.deleteRow(1);
-	}
 }
 
 (document.readyState === "loading")
