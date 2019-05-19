@@ -54,7 +54,7 @@ class CandidatesTable
 	}
 }
 
-function filterCandidateBySkill (candidates, skillFilter)
+function filterCandidatesBySkill (candidates, skillFilter)
 {
 	return candidates.filter((candidate) => (
 		candidate.skills.find((skill) => (
@@ -78,7 +78,7 @@ function mountBody ()
 	const candidatesTable = new CandidatesTable(candidates);
 	const newCandidatesTable = new CandidatesTable(candidates);
 
-	const filteredCandidates = filterCandidateBySkill(
+	const filteredCandidates = filterCandidatesBySkill(
 		candidates,
 		"JavaScript"
 	);
