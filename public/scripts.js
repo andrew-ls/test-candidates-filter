@@ -41,7 +41,7 @@ function insertCandidate (tbody, name, skills)
 	skillCell.appendChild(candidateSkills);
 }
 
-function constructCandidatesTable ()
+function constructCandidatesTable (candidates)
 {
 	const table = document.createElement("table");
 	table.setAttribute("class", "candidates");
@@ -58,7 +58,7 @@ function constructCandidatesTable ()
 
 	const table_body = table.appendChild(document.createElement("tbody"));
 
-	newCandidates.forEach((candidate) => {
+	candidates.forEach((candidate) => {
 		const row = table_body.insertRow();
 		const row_col1 = row.appendChild(document.createElement("td"));
 		row_col1.innerHTML = candidate.name;
@@ -71,7 +71,7 @@ function constructCandidatesTable ()
 
 function mountBody ()
 {
-	const candidatesTable = constructCandidatesTable();
+	const candidatesTable = constructCandidatesTable(newCandidates);
 	const newCandidatesTable = candidatesTable.cloneNode(true);
 
 	removeRowsFromTable(newCandidatesTable);
