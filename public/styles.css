@@ -7,6 +7,9 @@
 	Fonts
 *******************************************************************************/
 
+/* Source Sans Pro */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
+
 /* Space Mono */
 @import url('https://fonts.googleapis.com/css?family=Space+Mono:400');
 
@@ -14,6 +17,19 @@
 /*******************************************************************************
 	Styles
 *******************************************************************************/
+
+html {
+	color: rgb(0, 0, 0);
+	font-size: 16px;
+	font-weight: normal;
+}
+
+body {
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 1.5em;
+	font-weight: 300;
+	margin: 1em;
+}
 
 h1 {
 	font-family: "Space Mono", monospace;
@@ -26,7 +42,7 @@ h1::after {
 }
 
 .candidates {
-	font-size: 12px;
+	font-size: 0.75em;
 	background: #fff;
 	margin: 45px;
 	width: 480px;
@@ -35,9 +51,8 @@ h1::after {
 }
 
 .candidates th {
-	font-size: 16px;
-	font-weight: normal;
 	color: #039;
+	font-weight: inherit;
 	padding: 10px 8px;
 	border-bottom: 2px solid #6678b1;
 }
