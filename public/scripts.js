@@ -21,15 +21,9 @@ function addCandidatesToTable (table, candidates)
 
 function filterCandidateBySkill (candidates, skill)
 {
-	/*
-	 * Assuming the use of an ES6 arrow function in addCandidatesToTable means
-	 * I can use ES6 array spread syntax here.
-	*/
-	return candidates.reduce((matchingCandidates, candidate) => (
+	return candidates.filter((candidate) => (
 		candidate.skills.includes(skill)
-			? [...matchingCandidates, candidate]
-			: matchingCandidates
-	), []);
+	));
 }
 
 function insertCandidate (tbody, name, skills)
