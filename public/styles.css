@@ -41,27 +41,28 @@ h1::after {
 	content: ".";
 }
 
-.candidates {
-	font-size: 0.75em;
-	background: #fff;
-	margin: 45px;
-	width: 480px;
+table {
 	border-collapse: collapse;
+	box-sizing: border-box;
 	text-align: left;
 }
-
-.candidates th {
-	color: #039;
+table th {
+	border-bottom: 0.125em dashed rgb(0, 0, 0);
 	font-weight: inherit;
-	padding: 10px 8px;
-	border-bottom: 2px solid #6678b1;
+	padding: 0.5em 0.375em;
+}
+table td {
+	padding: 0.375em;
+}
+table tbody tr:hover td {
+	background: rgba(0, 0, 0, 0.05);
 }
 
-.candidates td {
-	color: #669;
-	padding: 9px 8px 0px 8px;
+.candidates {
+	margin: 2em;
+	table-layout: fixed;
+	width: 25em;
 }
-
-.candidates tbody tr:hover td {
-	color: #009;
+.candidates th:first-of-type {
+	width: 8em;
 }
