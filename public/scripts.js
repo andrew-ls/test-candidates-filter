@@ -58,13 +58,7 @@ function constructCandidatesTable (candidates)
 
 	const table_body = table.appendChild(document.createElement("tbody"));
 
-	candidates.forEach((candidate) => {
-		const row = table_body.insertRow();
-		const row_col1 = row.appendChild(document.createElement("td"));
-		row_col1.innerHTML = candidate.name;
-		const row_col2 = row.appendChild(document.createElement("td"));
-		row_col2.innerHTML = candidate.skills.join(", ");
-	});
+	addCandidatesToTable(table_body, candidates);
 
 	return table;
 }
