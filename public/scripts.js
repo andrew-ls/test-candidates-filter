@@ -76,27 +76,15 @@ function mountBody ()
 	];
 
 	const candidatesTable = new CandidatesTable(candidates);
-	const newCandidatesTable = new CandidatesTable(filterCandidatesBySkill(
-		candidates,
-		"JavaScript"
-	));
 
 	const filterInput = document.getElementById("candidates-filter");
-	filterInput.value = "JavaScript";
 	filterInput.oninput = (event) => {
-		newCandidatesTable.fill(
+		candidatesTable.fill(
 			filterCandidatesBySkill(candidates, event.target.value)
 		);
 	};
 
-	document.body.insertBefore(
-		candidatesTable.element,
-		document.getElementById("heading-candidates").nextSibling
-	);
-	document.body.insertBefore(
-		newCandidatesTable.element,
-		document.getElementById("candidates-filter").nextSibling
-	);
+	document.body.appendChild(candidatesTable.element);
 }
 
 (document.readyState === "loading")
