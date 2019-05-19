@@ -12,6 +12,33 @@ const newCandidates = [
 	{ name: "Matt", skills: ["PHP", ".Net", "Docker"] },
 ];
 
+class CandidatesTable
+{
+	constructor (candidates)
+	{
+		this.element = (() => {
+			const table = document.createElement("table");
+			table.setAttribute("class", "candidates");
+
+			const table_head = table.createTHead().insertRow();
+			const table_head_col1 = table_head.appendChild(
+				document.createElement("th")
+			);
+			table_head_col1.innerHTML = "Name";
+			const table_head_col2 = table_head.appendChild(
+				document.createElement("th")
+			);
+			table_head_col2.innerHTML = "Skills";
+
+			const table_body = table.appendChild(document.createElement("tbody"));
+
+			addCandidatesToTable(table_body, candidates);
+
+			return table;
+		})();
+	}
+}
+
 function addCandidatesToTable (table, candidates)
 {
 	candidates.forEach((candidate) => (
@@ -41,35 +68,14 @@ function insertCandidate (tbody, name, skills)
 	skillCell.appendChild(candidateSkills);
 }
 
-function constructCandidatesTable (candidates)
-{
-	const table = document.createElement("table");
-	table.setAttribute("class", "candidates");
-
-	const table_head = table.createTHead().insertRow();
-	const table_head_col1 = table_head.appendChild(
-		document.createElement("th")
-	);
-	table_head_col1.innerHTML = "Name";
-	const table_head_col2 = table_head.appendChild(
-		document.createElement("th")
-	);
-	table_head_col2.innerHTML = "Skills";
-
-	const table_body = table.appendChild(document.createElement("tbody"));
-
-	addCandidatesToTable(table_body, candidates);
-
-	return table;
-}
-
 function mountBody ()
 {
-	const candidatesTable = constructCandidatesTable(newCandidates);
-	const newCandidatesTable = candidatesTable.cloneNode(true);
+	const candidatesTable = new CandidatesTable(newCandidates);
+	const newCandidatesTable = new CandidatesTable(newCandidates);
 
-	removeRowsFromTable(newCandidatesTable);
-	const newTbody = newCandidatesTable.getElementsByTagName("tbody")[0];
+	removeRowsFromTable(newCandidatesTable.element);
+	const newTbody = newCandidatesTable.element
+		.getElementsByTagName("tbody")[0];
 
 	const filteredCandidates = filterCandidateBySkill(
 		newCandidates,
@@ -78,11 +84,11 @@ function mountBody ()
 	addCandidatesToTable(newTbody, filteredCandidates);
 
 	document.body.insertBefore(
-		candidatesTable,
+		candidatesTable.element,
 		document.getElementById("heading-candidates").nextSibling
 	);
 	document.body.insertBefore(
-		newCandidatesTable,
+		newCandidatesTable.element,
 		document.getElementById("heading-candidates-filtered").nextSibling
 	);
 }
