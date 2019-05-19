@@ -45,6 +45,23 @@ function insertCandidate (tbody, name, skills)
 	skillCell.appendChild(candidateSkills);
 }
 
+function mountBody ()
+{
+	const candidatesTable = document.getElementById("candidates_example");
+	const newCandidatesTable = candidatesTable.cloneNode(true);
+
+	removeRowsFromTable(newCandidatesTable);
+	const newTbody = newCandidatesTable.getElementsByTagName("tbody")[0];
+
+	const filteredCandidates = filterCandidateBySkill(
+		newCandidates,
+		"JavaScript"
+	);
+	addCandidatesToTable(newTbody, filteredCandidates);
+
+	document.body.appendChild(newCandidatesTable);
+}
+
 function removeRowsFromTable (table)
 {
 	const rows = table.getElementsByTagName("tr");
@@ -54,29 +71,6 @@ function removeRowsFromTable (table)
 	}
 }
 
-function filterCandidateBySkill (candidates, skill)
-{
-	/*
-	 * Assuming the use of an ES6 arrow function in addCandidatesToTable means
-	 * I can use ES6 array spread syntax here.
-	*/
-	return candidates.reduce((matchingCandidates, candidate) => (
-		candidate.skills.includes(skill)
-			? [...matchingCandidates, candidate]
-			: matchingCandidates
-	), []);
-}
-
-const candidatesTable = document.getElementById("candidates_example");
-const newCandidatesTable = candidatesTable.cloneNode(true);
-
-removeRowsFromTable(newCandidatesTable);
-const newTbody = newCandidatesTable.getElementsByTagName("tbody")[0];
-
-const filteredCandidates = filterCandidateBySkill(
-	newCandidates,
-	"JavaScript"
-);
-addCandidatesToTable(newTbody, filteredCandidates);
-
-document.body.appendChild(newCandidatesTable);
+(document.readyState === "loading")
+	? document.addEventListener("DOMContentLoaded", mountBody)
+	: mountBody();
