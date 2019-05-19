@@ -2,6 +2,29 @@
  * Modifications copyright (c) 2019 Andrew Steel <copyright@andrewsteel.net>
 */
 
+
+/*******************************************************************************
+	Fonts
+*******************************************************************************/
+
+/* Space Mono */
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400');
+
+
+/*******************************************************************************
+	Styles
+*******************************************************************************/
+
+h1 {
+	font-family: "Space Mono", monospace;
+	font-size: 3em;
+	font-weight: 400;
+	margin: 1em 0;
+}
+h1::after {
+	content: ".";
+}
+
 .candidates {
 	font-size: 12px;
 	background: #fff;
