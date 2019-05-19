@@ -41,9 +41,37 @@ function insertCandidate (tbody, name, skills)
 	skillCell.appendChild(candidateSkills);
 }
 
+function constructCandidatesTable ()
+{
+	const table = document.createElement("table");
+	table.setAttribute("class", "candidates");
+
+	const table_head = table.createTHead().insertRow();
+	const table_head_col1 = table_head.appendChild(
+		document.createElement("th")
+	);
+	table_head_col1.innerHTML = "Name";
+	const table_head_col2 = table_head.appendChild(
+		document.createElement("th")
+	);
+	table_head_col2.innerHTML = "Skills";
+
+	const table_body = table.appendChild(document.createElement("tbody"));
+
+	newCandidates.forEach((candidate) => {
+		const row = table_body.insertRow();
+		const row_col1 = row.appendChild(document.createElement("td"));
+		row_col1.innerHTML = candidate.name;
+		const row_col2 = row.appendChild(document.createElement("td"));
+		row_col2.innerHTML = candidate.skills.join(", ");
+	});
+
+	return table;
+}
+
 function mountBody ()
 {
-	const candidatesTable = document.getElementById("candidates_example");
+	const candidatesTable = constructCandidatesTable();
 	const newCandidatesTable = candidatesTable.cloneNode(true);
 
 	removeRowsFromTable(newCandidatesTable);
@@ -55,7 +83,14 @@ function mountBody ()
 	);
 	addCandidatesToTable(newTbody, filteredCandidates);
 
-	document.body.appendChild(newCandidatesTable);
+	document.body.insertBefore(
+		candidatesTable,
+		document.getElementById("heading-candidates").nextSibling
+	);
+	document.body.insertBefore(
+		newCandidatesTable,
+		document.getElementById("heading-candidates-filtered").nextSibling
+	);
 }
 
 function removeRowsFromTable (table)
