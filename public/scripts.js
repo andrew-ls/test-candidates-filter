@@ -2,16 +2,6 @@
  * Modifications copyright (c) 2019 Andrew Steel <copyright@andrewsteel.net>
 */
 
-const newCandidates = [
-	{ name: "Kerrie", skills: ["JavaScript", "Docker", "Ruby"] },
-	{ name: "Mario", skills: ["Python", "AWS"] },
-	{ name: "Jacquline", skills: ["JavaScript", "Azure"] },
-	{ name: "Kathy", skills: ["JavaScript", "Java"] },
-	{ name: "Anna", skills: ["JavaScript", "AWS"] },
-	{ name: "Matt", skills: ["PHP", "AWS"] },
-	{ name: "Matt", skills: ["PHP", ".Net", "Docker"] },
-];
-
 class CandidatesTable
 {
 	constructor (candidates)
@@ -75,11 +65,21 @@ function filterCandidateBySkill (candidates, skillFilter)
 
 function mountBody ()
 {
-	const candidatesTable = new CandidatesTable(newCandidates);
-	const newCandidatesTable = new CandidatesTable(newCandidates);
+	const candidates = [
+		{ name: "Kerrie", skills: ["JavaScript", "Docker", "Ruby"] },
+		{ name: "Mario", skills: ["Python", "AWS"] },
+		{ name: "Jacquline", skills: ["JavaScript", "Azure"] },
+		{ name: "Kathy", skills: ["JavaScript", "Java"] },
+		{ name: "Anna", skills: ["JavaScript", "AWS"] },
+		{ name: "Matt", skills: ["PHP", "AWS"] },
+		{ name: "Matt", skills: ["PHP", ".Net", "Docker"] },
+	];
+
+	const candidatesTable = new CandidatesTable(candidates);
+	const newCandidatesTable = new CandidatesTable(candidates);
 
 	const filteredCandidates = filterCandidateBySkill(
-		newCandidates,
+		candidates,
 		"JavaScript"
 	);
 	newCandidatesTable.fill(filteredCandidates);
