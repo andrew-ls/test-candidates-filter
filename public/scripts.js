@@ -30,12 +30,11 @@ class CandidatesTable
 			);
 			table_head_col2.innerHTML = "Skills";
 
-			const table_body = table.appendChild(document.createElement("tbody"));
-
-			addCandidatesToTable(table_body, candidates);
+			table.appendChild(document.createElement("tbody"));
 
 			return table;
 		})();
+		this.fill(candidates);
 	}
 
 	clear ()
@@ -45,13 +44,18 @@ class CandidatesTable
 			this.element.deleteRow(1);
 		}
 	}
-}
 
-function addCandidatesToTable (table, candidates)
-{
-	candidates.forEach((candidate) => (
-		insertCandidate(table, candidate.name, candidate.skills)
-	));
+	fill (candidates)
+	{
+		this.clear();
+		candidates.forEach((candidate) => {
+			insertCandidate(
+				this.element.getElementsByTagName("tbody")[0],
+				candidate.name,
+				candidate.skills
+			);
+		});
+	}
 }
 
 function filterCandidateBySkill (candidates, skillFilter)
@@ -81,15 +85,11 @@ function mountBody ()
 	const candidatesTable = new CandidatesTable(newCandidates);
 	const newCandidatesTable = new CandidatesTable(newCandidates);
 
-	newCandidatesTable.clear();
-	const newTbody = newCandidatesTable.element
-		.getElementsByTagName("tbody")[0];
-
 	const filteredCandidates = filterCandidateBySkill(
 		newCandidates,
 		"JavaScript"
 	);
-	addCandidatesToTable(newTbody, filteredCandidates);
+	newCandidatesTable.fill(filteredCandidates);
 
 	document.body.insertBefore(
 		candidatesTable.element,
