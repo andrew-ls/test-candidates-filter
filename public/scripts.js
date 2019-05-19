@@ -81,13 +81,21 @@ function mountBody ()
 		"JavaScript"
 	));
 
+	const filterInput = document.getElementById("candidates-filter");
+	filterInput.value = "JavaScript";
+	filterInput.oninput = (event) => {
+		newCandidatesTable.fill(
+			filterCandidatesBySkill(candidates, event.target.value)
+		);
+	};
+
 	document.body.insertBefore(
 		candidatesTable.element,
 		document.getElementById("heading-candidates").nextSibling
 	);
 	document.body.insertBefore(
 		newCandidatesTable.element,
-		document.getElementById("heading-candidates-filtered").nextSibling
+		document.getElementById("candidates-filter").nextSibling
 	);
 }
 
