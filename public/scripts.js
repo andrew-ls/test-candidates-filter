@@ -76,13 +76,10 @@ function mountBody ()
 	];
 
 	const candidatesTable = new CandidatesTable(candidates);
-	const newCandidatesTable = new CandidatesTable(candidates);
-
-	const filteredCandidates = filterCandidatesBySkill(
+	const newCandidatesTable = new CandidatesTable(filterCandidatesBySkill(
 		candidates,
 		"JavaScript"
-	);
-	newCandidatesTable.fill(filteredCandidates);
+	));
 
 	document.body.insertBefore(
 		candidatesTable.element,
