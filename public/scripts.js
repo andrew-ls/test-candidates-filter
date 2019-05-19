@@ -39,17 +39,12 @@ class CandidatesTable
 
 	add (name, skills)
 	{
-		const tbody = this.element.getElementsByTagName("tbody")[0];
-
-		const newRow = tbody.insertRow();
-		const nameCell = newRow.insertCell();
-		const skillCell = newRow.insertCell();
-
-		const candidateName = document.createTextNode(name);
-		const candidateSkills = document.createTextNode(skills.join(", "));
-
-		nameCell.appendChild(candidateName);
-		skillCell.appendChild(candidateSkills);
+		const row = this.element.getElementsByTagName("tbody")[0]
+			.insertRow();
+		row.insertCell()
+			.appendChild(document.createTextNode(name));
+		row.insertCell()
+			.appendChild(document.createTextNode(skills.join(", ")));
 	}
 
 	clear ()
