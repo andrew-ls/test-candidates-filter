@@ -19,10 +19,12 @@ function addCandidatesToTable (table, candidates)
 	));
 }
 
-function filterCandidateBySkill (candidates, skill)
+function filterCandidateBySkill (candidates, skillFilter)
 {
 	return candidates.filter((candidate) => (
-		candidate.skills.includes(skill)
+		candidate.skills.find((skill) => (
+			skill.match(new RegExp(`.*${skillFilter}.*`, "i"))
+		))
 	));
 }
 
