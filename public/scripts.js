@@ -37,6 +37,21 @@ class CandidatesTable
 		this.fill(candidates);
 	}
 
+	add (name, skills)
+	{
+		const tbody = this.element.getElementsByTagName("tbody")[0];
+
+		const newRow = tbody.insertRow();
+		const nameCell = newRow.insertCell();
+		const skillCell = newRow.insertCell();
+
+		const candidateName = document.createTextNode(name);
+		const candidateSkills = document.createTextNode(skills.join(", "));
+
+		nameCell.appendChild(candidateName);
+		skillCell.appendChild(candidateSkills);
+	}
+
 	clear ()
 	{
 		const rows = this.element.getElementsByTagName("tr");
@@ -49,11 +64,7 @@ class CandidatesTable
 	{
 		this.clear();
 		candidates.forEach((candidate) => {
-			insertCandidate(
-				this.element.getElementsByTagName("tbody")[0],
-				candidate.name,
-				candidate.skills
-			);
+			this.add(candidate.name, candidate.skills);
 		});
 	}
 }
@@ -65,19 +76,6 @@ function filterCandidateBySkill (candidates, skillFilter)
 			skill.match(new RegExp(`.*${skillFilter}.*`, "i"))
 		))
 	));
-}
-
-function insertCandidate (tbody, name, skills)
-{
-	const newRow = tbody.insertRow();
-	const nameCell = newRow.insertCell();
-	const skillCell = newRow.insertCell();
-
-	const candidateName = document.createTextNode(name);
-	const candidateSkills = document.createTextNode(skills.join(", "));
-
-	nameCell.appendChild(candidateName);
-	skillCell.appendChild(candidateSkills);
 }
 
 function mountBody ()
