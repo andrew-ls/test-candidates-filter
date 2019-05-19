@@ -1,3 +1,7 @@
+<!------------------------------------------------------------------------------
+	Modifications copyright (c) 2019 Andrew Steel <copyright@andrewsteel.net>
+------------------------------------------------------------------------------->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +48,7 @@
 <body>
 
 	<div id="container">
-		<h2>Demo Table Of Candidates</h2>
+		<h2>Candidates (Demo)</h2>
 		<table class="candidates" id="candidates_example">
 			<thead>
 				<tr>
@@ -65,7 +69,7 @@
 				<td>.NET, Azure</td>
 			</tr>
 		</table>
-		<h2>Candidates (Currently Unfiltered)</h2>
+		<h2>Candidates</h2>
 	</div>
 
 	<script type="text/javascript">
@@ -111,8 +115,15 @@
 
 		function filterCandidateBySkill (candidates, skill)
 		{
-			// INSERT YOUR LOGIC HERE  <----------------------------------------
-			return candidates;
+			/*
+			 * Assuming the use of an ES6 arrow function in addCandidatesToTable
+			 * means I can use ES6 array spread syntax here.
+			*/
+			return candidates.reduce((matchingCandidates, candidate) => (
+				candidate.skills.includes(skill)
+					? [...matchingCandidates, candidate]
+					: matchingCandidates
+			), []);
 		}
 
 		const candidatesTable = document.getElementById("candidates_example");
