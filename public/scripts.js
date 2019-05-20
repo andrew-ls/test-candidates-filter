@@ -8,7 +8,7 @@ class CandidatesTable
 	{
 		this.element = (() => {
 			const table = document.createElement("table");
-			table.setAttribute("class", "candidates");
+			table.setAttribute("class", "candidates-table");
 
 			const table_head = table.createTHead().insertRow();
 			const table_head_col1 = table_head.appendChild(
@@ -77,7 +77,8 @@ function mountBody ()
 
 	const candidatesTable = new CandidatesTable(candidates);
 
-	const filterInput = document.getElementById("candidates-filter");
+	const filterInput = document.getElementsByClassName("candidates-filter")[0]
+		.getElementsByTagName("input")[0];
 	filterInput.oninput = (event) => {
 		candidatesTable.fill(
 			filterCandidatesBySkill(candidates, event.target.value)
