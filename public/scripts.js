@@ -68,7 +68,7 @@ function mountBody ()
 	const candidates = [
 		{ name: "Kerrie", skills: ["JavaScript", "Docker", "Ruby"] },
 		{ name: "Mario", skills: ["Python", "AWS"] },
-		{ name: "Jacquline", skills: ["JavaScript", "Azure"] },
+		{ name: "Jacqueline", skills: ["JavaScript", "Azure"] },
 		{ name: "Kathy", skills: ["JavaScript", "Java"] },
 		{ name: "Anna", skills: ["JavaScript", "AWS"] },
 		{ name: "Matt", skills: ["PHP", "AWS"] },
