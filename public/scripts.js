@@ -54,17 +54,17 @@ class CandidatesTable
 	}
 }
 
-function filterCandidatesBySkill (candidates, skillFilter)
-{
-	return candidates.filter((candidate) => (
-		candidate.skills.find((skill) => (
-			skill.match(new RegExp(`.*${skillFilter}.*`, "i"))
-		))
-	));
-}
-
 function mountBody ()
 {
+	function filterCandidatesBySkill (candidates, skillFilter)
+	{
+		return candidates.filter((candidate) => (
+			candidate.skills.find((skill) => (
+				skill.match(new RegExp(`.*${skillFilter}.*`, "i"))
+			))
+		));
+	}
+
 	const candidates = [
 		{ name: "Kerrie", skills: ["JavaScript", "Docker", "Ruby"] },
 		{ name: "Mario", skills: ["Python", "AWS"] },
