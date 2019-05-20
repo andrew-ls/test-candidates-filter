@@ -56,14 +56,13 @@ class CandidatesTable
 
 function mountBody ()
 {
-	function filterCandidatesBySkill (candidates, skillFilter)
-	{
-		return candidates.filter((candidate) => (
+	const filterCandidatesBySkill = (candidates, skillFilter) => (
+		candidates.filter((candidate) => (
 			candidate.skills.find((skill) => (
 				skill.match(new RegExp(`.*${skillFilter}.*`, "i"))
 			))
-		));
-	}
+		))
+	);
 
 	const candidates = [
 		{ name: "Kerrie", skills: ["JavaScript", "Docker", "Ruby"] },
