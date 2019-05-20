@@ -1,0 +1,85 @@
+/*
+ * Modifications copyright (c) 2019 Andrew Steel <copyright@andrewsteel.net>
+*/
+
+
+/*******************************************************************************
+	Fonts
+*******************************************************************************/
+
+/* Source Sans Pro */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
+
+/* Space Mono */
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400');
+
+
+/*******************************************************************************
+	Styles
+*******************************************************************************/
+
+html {
+	color: rgb(0, 0, 0);
+	font-size: 16px;
+	font-weight: normal;
+}
+
+body {
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 1.5em;
+	font-weight: 300;
+	margin: 3em;
+}
+
+h1 {
+	font-family: "Space Mono", monospace;
+	font-size: 3em;
+	font-weight: 400;
+	margin: 1em -0.666666em;
+}
+h1::after {
+	content: ".";
+}
+
+table {
+	border-collapse: collapse;
+	box-sizing: border-box;
+	text-align: left;
+}
+table th {
+	border-bottom: 0.125em dashed rgb(0, 0, 0);
+	font-weight: inherit;
+	padding: 0.5em 0.375em;
+}
+table td {
+	padding: 0.375em;
+}
+table tbody tr:hover td {
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.candidates-filter {
+	box-sizing: border-box;
+	display: table;
+	padding: 0 0.375em;
+	width: 25em;
+}
+.candidates-filter > * {
+	display: table-cell;
+}
+.candidates-filter > input {
+	width: 100%;
+}
+.candidates-filter > label {
+	width: 1px;
+	padding-right: 0.5em;
+}
+
+.candidates-table {
+	margin: 1.5em 0;
+	table-layout: fixed;
+	width: 25em;
+}
+.candidates-table th:first-of-type {
+	width: 8em;
+}
