@@ -28,14 +28,14 @@ body {
 	font-family: "Source Sans Pro", sans-serif;
 	font-size: 1.5em;
 	font-weight: 300;
-	margin: 1em;
+	margin: 3em;
 }
 
 h1 {
 	font-family: "Space Mono", monospace;
 	font-size: 3em;
 	font-weight: 400;
-	margin: 1em 0;
+	margin: 1em -0.666666em;
 }
 h1::after {
 	content: ".";
@@ -59,10 +59,25 @@ table tbody tr:hover td {
 }
 
 .candidates {
-	margin: 2em;
+	margin: 1.5em 0;
 	table-layout: fixed;
 	width: 25em;
 }
 .candidates th:first-of-type {
 	width: 8em;
+}
+
+.candidates-filter {
+	display: table;
+	width: 25em;
+}
+.candidates-filter > * {
+	display: table-cell;
+}
+.candidates-filter > input {
+	width: 100%;
+}
+.candidates-filter > label {
+	width: 1px;
+	padding-right: 0.5em;
 }
