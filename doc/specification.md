@@ -146,8 +146,8 @@ and crystal clear. Don't over-engineer the solution.
 
 ### Initial State <a id="initial-state"></a>
 
-![Unfiltered Candidates](img/initial.png)
+![Unfiltered Candidates](img/spec-initial.png)
 
 ### Target State <a id="target-state"></a>
 
-![Filtered Candidates](img/target.png)
+![Filtered Candidates](img/spec-target.png)
